@@ -1,0 +1,47 @@
+# Taxi MDP Default Configuration
+# ==============================
+# Copy this file to config.yaml and modify as needed.
+
+# MDP Parameters
+mdp:
+  grid_size: 5                    # Grid dimensions (NxN)
+  discount_factor: 0.9            # Future reward discount (gamma)
+  max_iterations: 100             # Maximum value iteration cycles
+  convergence_threshold: 0.001    # Early stopping threshold
+  passenger_arrival_prob: 0.2     # Probability of new passenger when taxi empty
+
+# Reward Structure
+rewards:
+  step_cost: -1                   # Cost per movement action
+  invalid_action: -5              # Penalty for invalid pick/drop
+  successful_pickup: 0            # Reward for successful pickup
+  successful_delivery: 10         # Reward for successful delivery
+
+# Visualization Settings
+visualization:
+  cell_size: 100                  # Size of each grid cell in pixels
+  fps: 60                         # Target frames per second
+  default_speed: 0.4              # Default delay between steps (seconds)
+  min_speed: 0.05                 # Minimum delay (fastest)
+  max_speed: 2.0                  # Maximum delay (slowest)
+  show_hud: true                  # Show HUD overlay by default
+
+  # Colors (RGB)
+  colors:
+    background: [255, 255, 255]   # White
+    grid_lines: [0, 0, 0]         # Black
+    taxi: [0, 0, 255]             # Blue
+    passenger_waiting: [0, 255, 0] # Green
+    passenger_in_taxi: [255, 255, 0] # Yellow
+    destination: [255, 0, 0]      # Red
+
+# Logging Configuration
+logging:
+  level: INFO                     # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null                      # Log file path (null = console only)
+
+# Export Settings
+export:
+  default_policy_file: policy.json
+  default_grid_file: policy_grid.txt
